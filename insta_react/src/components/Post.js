@@ -15,7 +15,7 @@ export default class Post extends Component {
                     some account
                 </div>
                 <div className="post__descr">
-                    kksfjhdghd gdg dgdghdhdfghfnbf dfhkluilysa
+                    kksfjhdghd gdg dgdghdhdfghfnbf dfhkluilysajghj
                 </div>
             </div>
         )
