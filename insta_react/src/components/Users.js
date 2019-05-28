@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import User from './User';
 import InstaService from '../services/instaservice';
+import ErrorMessage from './ErrorMessage';
 
 export default class Users extends Component {
     InstaService = new InstaService();
     state = {
-        users: []
+        users: [],
+        error: false
     }
 
     componentDidMount() {
@@ -20,7 +22,14 @@ export default class Users extends Component {
 
     onUsersLoaded = (users) => {
         this.setState({
-            users
+            users,
+            error: false
+        })
+    }
+
+    onError = (err) => {
+        this.setState({
+            error: true
         })
     }
 
@@ -40,7 +49,11 @@ export default class Users extends Component {
     }
 
     render () {
-        const {users} = this.state;
+        const {error, users} = this.state;
+        if (error) {
+            return <ErrorMessage />
+        }
+
         const items = this.renderUsers(users);
 
         return (
